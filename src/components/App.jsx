@@ -1,57 +1,64 @@
 import React, { Component } from 'react';
-import Section from 'components/Section/Section.jsx';
-import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions.jsx';
-import Statistics from 'components/Statistics/Statistics.jsx';
-import Notification from 'components/Notification/Notification.jsx';
+import ContactsForm from 'components/ContactsForm/ContactsForm';
+import ContactsList from 'components/ContactsList/ContactsList';
+import Filter from 'components/Filter/Filter';
+import { Box } from 'components/Box/Box.styled.js';
 
 class App extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
   };
 
-  countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    return ((this.state.good / this.countTotalFeedback()) * 100).toFixed();
-  };
-
-  onLeaveFeedback = ({ target: { name } }) => {
-    const newName = name.toLowerCase();
-    this.setState(() => {
-      return { [newName]: this.state[newName] + 1 };
+  onAddContactInfo = contactObj => {
+    if (
+      this.state.contacts.find(
+        cont => cont.name.toLowerCase() === contactObj.name.toLowerCase()
+      )
+    ) {
+      return alert(`${contactObj.name} is already in contacts`);
+    }
+    this.setState(prevStat => {
+      return { contacts: [contactObj, ...this.state.contacts] };
     });
   };
 
+  onAddFilter = e => {
+    this.setState(() => {
+      return { filter: e.target.value };
+    });
+  };
+
+  filterContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   render() {
-    const total = this.countTotalFeedback();
-    const percentage = this.countPositiveFeedbackPercentage();
     return (
-      <div>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={['Good', 'Neutral', 'Bad']}
-            onLeaveFeedback={this.onLeaveFeedback}
+      <section>
+        <Box>
+          <h1>Phonebook</h1>
+          <ContactsForm
+            onAddContactInfo={this.onAddContactInfo}
+            contacts={this.state.contacts}
           />
-        </Section>
-        <Section title="Statistics">
-          {this.countTotalFeedback() ? (
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={total}
-              positivePercentage={percentage}
-            />
-          ) : (
-            <Notification message="There is no feedback"></Notification>
-          )}
-        </Section>
-      </div>
+        </Box>
+        <Box>
+          <h2>Contacts</h2>
+          <Filter onAddFilter={this.onAddFilter} filter={this.state.filter} />
+          <ContactsList contactsList={this.filterContacts()} />
+        </Box>
+      </section>
     );
   }
 }
+
 export default App;
