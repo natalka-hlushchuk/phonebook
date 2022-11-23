@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { ContactsLabel, Button, Field } from './ContactsForm.styled';
 
-import Form from './ContactsForm.styled';
-
-class ContactsForm extends Component {
+export class ContactsForm extends Component {
   state = {
     name: '',
     number: '',
   };
-
-  NameInputId = nanoid();
 
   onChange = e => {
     const { name, value } = e.currentTarget;
@@ -28,7 +25,6 @@ class ContactsForm extends Component {
       number: this.state.number,
     };
 
-    console.log(this.props.contacts);
     this.props.onAddContactInfo(contactInfo);
     this.setState({
       name: '',
@@ -38,10 +34,10 @@ class ContactsForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <label>
-          <span>Name</span>
-          <input
+      <form onSubmit={this.handleSubmit}>
+        <ContactsLabel>
+          <span className="text">Name </span>
+          <Field
             onChange={this.onChange}
             type="text"
             name="name"
@@ -50,10 +46,10 @@ class ContactsForm extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label>
-          <span>Number</span>
-          <input
+        </ContactsLabel>
+        <ContactsLabel>
+          <span className="text">Number</span>
+          <Field
             onChange={this.onChange}
             type="tel"
             name="number"
@@ -62,14 +58,15 @@ class ContactsForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </Form>
+        </ContactsLabel>
+        <Button type="submit">Add contact</Button>
+      </form>
     );
   }
 }
 
-export default ContactsForm;
 ContactsForm.propTypes = {
   onAddContactInfo: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };

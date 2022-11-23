@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { FilterForm, FilterField } from './Filter.styled';
 
 class Filter extends Component {
   render() {
     return (
-      <label>
-        <span>Find contacts by name</span>
-        <input
+      <FilterForm>
+        <span className="name">Find contacts by name</span>
+        <FilterField
           onChange={this.props.onAddFilter}
           type="text"
           name="filter"
@@ -14,9 +16,13 @@ class Filter extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
+      </FilterForm>
     );
   }
 }
 
 export default Filter;
+Filter.propTypes = {
+  onAddFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+};
