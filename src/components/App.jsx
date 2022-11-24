@@ -70,10 +70,7 @@ class App extends Component {
       >
         <Box pb="40px">
           <Title>Phonebook</Title>
-          <ContactsForm
-            onAddContactInfo={this.onAddContactInfo}
-            contacts={this.state.contacts}
-          />
+          <ContactsForm onAddContactInfo={this.onAddContactInfo} />
         </Box>
         <Box>
           <TitleCont>Contacts</TitleCont>
