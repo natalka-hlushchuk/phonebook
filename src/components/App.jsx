@@ -5,6 +5,8 @@ import Filter from 'components/Filter/Filter';
 
 import { Box, Title, TitleCont } from 'components/Box/Box.styled.js';
 
+const LS_KEY = 'contacts';
+
 class App extends Component {
   state = {
     contacts: [],
@@ -12,7 +14,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
+    const contacts = localStorage.getItem(LS_KEY);
     const contactsParse = JSON.parse(contacts);
     if (contactsParse) {
       this.setState({ contacts: contactsParse });
@@ -20,7 +22,7 @@ class App extends Component {
   }
   componentDidUpdate(prevState) {
     if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
     }
   }
   onAddContactInfo = contactObj => {
