@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ContactsForm } from 'components/ContactsForm/ContactsForm';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import Filter from 'components/Filter/Filter';
 import { Box, Title, TitleCont } from 'components/Box/Box.styled.js';
-import { useSelector } from 'react-redux';
-const LS_KEY = 'contacts';
 
 const App = () => {
   return (

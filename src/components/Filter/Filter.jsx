@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FilterForm, FilterField } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
