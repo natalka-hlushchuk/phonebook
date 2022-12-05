@@ -1,32 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/sliceContacts';
 import {
   ContactsListStyled,
   ListItem,
 } from 'components/ContactsList/ContactsList.styled';
 import { Button } from 'components/ContactsForm/ContactsForm.styled';
 
-export const ContactsList = ({ contactsList, onDelete }) => {
+export const ContactsList = () => {
+  const contacts = useSelector(state => state.contacts);
+  console.log(contacts);
+  const filter = useSelector(({ filter }) => filter);
+  const dispatch = useDispatch();
+
+  const filterContacts = () => {
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
   return (
     <ContactsListStyled>
-      {contactsList.map(({ name, number, id }) => (
+      {filterContacts().map(({ name, number, id }) => (
         <ListItem key={id}>
           {name} {number}
-          <Button type="button" onClick={() => onDelete(id)}>
+          <Button type="button" onClick={() => dispatch(deleteContact(id))}>
             Delete
           </Button>
         </ListItem>
       ))}
     </ContactsListStyled>
   );
-};
-ContactsList.propTypes = {
-  onDelete: PropTypes.func.isRequired,
-  contactsList: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
 };
