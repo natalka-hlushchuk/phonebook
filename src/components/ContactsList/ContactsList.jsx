@@ -10,8 +10,7 @@ import { Button } from 'components/ContactsForm/ContactsForm.styled';
 
 export const ContactsList = () => {
   const contacts = useSelector(state => state.contacts);
-  console.log(contacts);
-  const filter = useSelector(({ filter }) => filter);
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const filterContacts = () => {

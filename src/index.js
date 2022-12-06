@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from 'components/App';
 import { Provider } from 'react-redux';
-import { store, persistor } from './redux/store';
+import store, { persistedStore } from './redux/store';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import './index.css';
@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={null} persistor={persistedStore}>
           <App />
         </PersistGate>
       </Provider>
