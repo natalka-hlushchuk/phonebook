@@ -1,11 +1,12 @@
 import React from 'react';
-import { FilterForm, FilterField } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { selectFilter } from 'redux/selectors';
 import { filterContact } from 'redux/sliceFilter';
+import { FilterForm, FilterField } from './Filter.styled';
 
 const Filter = () => {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const onChange = ({ target: { value } }) => {

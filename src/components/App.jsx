@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsLoading, selectError } from 'redux/selectors';
 import { ContactsForm } from 'components/ContactsForm/ContactsForm';
 import { ContactsList } from 'components/ContactsList/ContactsList';
+import { Loader } from 'components/Loader/loader';
 import Filter from 'components/Filter/Filter';
 import { Box, Title, TitleCont } from 'components/Box/Box.styled.js';
 
 const App = () => {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   return (
     <Box
       as="section"
@@ -21,6 +27,7 @@ const App = () => {
       </Box>
       <Box>
         <TitleCont>Contacts</TitleCont>
+        {isLoading && !error && <Loader />}
         <Filter />
         <ContactsList />
       </Box>
