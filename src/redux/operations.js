@@ -22,6 +22,7 @@ export const addContact = createAsyncThunk(
   async (info, thunkAPI) => {
     try {
       const response = await axios.post('contacts', info);
+      Notiflix.Notify.success(`${response.data.name} successfully added`);
       return response.data;
     } catch (e) {
       Notiflix.Notify.failure(`Something went wrong ${e.message}`);
@@ -35,6 +36,7 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`contacts/${contactId}`);
+      Notiflix.Notify.failure(`Контакт видалено ${response.data.name}`);
       return response.data;
     } catch (e) {
       Notiflix.Notify.failure(`Something went wrong ${e.message}`);

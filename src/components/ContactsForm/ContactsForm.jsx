@@ -44,7 +44,6 @@ export const ContactsForm = () => {
       );
 
     dispatch(addContact(contactInfo));
-    Notiflix.Notify.success(`${contactInfo.name} successfully added`);
     setName('');
     setNumber('');
   };
