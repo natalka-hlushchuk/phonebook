@@ -10,6 +10,10 @@ export const HomeStyled = styled.div`
   line-height: 1.17;
 `;
 export const HomeTitle = styled.h1`
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-size: 30px;
+  text-align: center;
+`;
+export const HomeDescription = styled.p`
+  font-weight: 400;
 `;

@@ -75,6 +75,8 @@ const RegisterForm = () => {
           type="password"
           name="password"
           value={password}
+          pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?=.*[A-Z])(?=.*[a-z]).*$"
+          title="Password may contain uppercase and lowercase latin letters, numbers. Minimum 8 characters."
           required
         />
       </ContactsLabel>

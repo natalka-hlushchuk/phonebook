@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Title = styled.h1`
+  color: rgb(212, 166, 252);
+  margin-bottom: 15px;
+  text-align: center;
+`;
 export const ContactsLabel = styled.label`
   display: flex;
   flex-direction: column;
@@ -12,6 +17,7 @@ export const ContactsLabel = styled.label`
     padding-bottom: 5px;
   }
 `;
+
 export const Field = styled.input`
   padding: 5px;
   background-color: white;

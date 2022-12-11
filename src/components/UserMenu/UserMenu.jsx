@@ -11,7 +11,7 @@ export const UserMenu = () => {
 
   return (
     <UserMenuStyled>
-      <img src={icon} width="62" alt="" />
+      <img src={icon} width="42" alt={name} />
       <UserText>Welcome, {name} </UserText>
       <Button type="button" onClick={() => dispatch(logOut())}>
         Log out

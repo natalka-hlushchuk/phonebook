@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+
+export const AuthNavStyled = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+
 export const NavLinkStyled = styled(NavLink)`
   font-weight: 500;
   font-size: 30px;

@@ -9,8 +9,10 @@ import { Button } from 'components/ContactsForm/ContactsForm.styled';
 import {
   ContactsListStyled,
   ListItem,
+  ListLink,
+  ListLinkWrap,
 } from 'components/ContactsList/ContactsList.styled';
-
+import { BsTelephoneForwardFill } from 'react-icons/bs';
 export const ContactsList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
@@ -29,10 +31,16 @@ export const ContactsList = () => {
     <ContactsListStyled>
       {filterContacts().map(({ name, number, id }) => (
         <ListItem key={id}>
-          {name} {number}
-          <Button type="button" onClick={() => dispatch(deleteContact(id))}>
-            Delete
-          </Button>
+          {name}
+          <ListLinkWrap>
+            <ListLink href={`tel:${number.replace(/\D/, '')}`}>
+              <BsTelephoneForwardFill size={18} style={{ marginRight: '10' }} />
+              {number}
+            </ListLink>
+            <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+              Delete
+            </Button>
+          </ListLinkWrap>
         </ListItem>
       ))}
     </ContactsListStyled>

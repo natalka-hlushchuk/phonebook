@@ -13,4 +13,18 @@ export const ListItem = styled.li`
   margin: 0;
   margin-bottom: 8px;
   color: #423189;
+  .icons {
+    margin-right: 10px;
+  }
+`;
+export const ListLinkWrap = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+export const ListLink = styled.a`
+  color: #990066;
+  &:hover,
+  &:focus {
+    color: #800080;
+  }
 `;

@@ -7,6 +7,7 @@ export const AppBarStyled = styled.header`
   z-index: 1100;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   min-height: 64px;
   padding-right: 24px;
   padding-left: 24px;
