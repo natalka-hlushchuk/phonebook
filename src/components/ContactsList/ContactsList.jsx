@@ -2,8 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { deleteContact, fetchContacts } from 'redux/operations';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import {
+  deleteContact,
+  fetchContacts,
+} from 'redux/contacts/contacts_operations';
+import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 import { Button } from 'components/ContactsForm/ContactsForm.styled';
 import {
   ContactsListStyled,

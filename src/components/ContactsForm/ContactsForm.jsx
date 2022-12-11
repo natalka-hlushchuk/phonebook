@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Notiflix from 'notiflix';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contacts_operations';
+import { selectContacts } from 'redux/contacts/selectors';
 import { ContactsLabel, Button, Field } from './ContactsForm.styled';
 
 export const ContactsForm = () => {
@@ -11,6 +11,7 @@ export const ContactsForm = () => {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  console.log(contacts);
 
   const onChange = e => {
     const { name, value } = e.currentTarget;
