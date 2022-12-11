@@ -17,7 +17,6 @@ const Login = lazy(() => import('../pages/Login/Login'));
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
-  console.log(isRefreshing);
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
