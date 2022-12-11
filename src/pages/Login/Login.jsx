@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-  ContactsLabel,
-  Field,
-  Button,
-} from 'components/ContactsForm/ContactsForm.styled';
 import LogInForm from 'components/LogInForm/LogInForm';
 
 const Login = () => {

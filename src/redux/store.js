@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/auth_slice';
 import { contactReducer } from './contacts/sliceContacts';
 import { filterReducer } from './contacts/sliceFilter';
@@ -20,12 +20,6 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-// const rootReducer = combineReducers({
-//   contacts: contactReducer,
-//   filter: filterReducer,
-//   auth: authReducer,
-// });
-
 const store = configureStore({
   reducer: {
     contacts: contactReducer,
@@ -43,26 +37,3 @@ const store = configureStore({
 
 export const persistedStore = persistStore(store);
 export default store;
-
-// const persistConfig = {
-//   key: "root",
-//   version: 1,
-//   storage,
-//   // if you do not want to persist this part of the state
-//   blacklist: ['omitedPart']
-// };
-
-// const reducer = combineReducers({
-//   cart: CartReducer,
-//   // not persisting this reducer
-//   omitedPart:OmitReducer
-// });
-// // this ensures your redux state is saved to persisted storage whenever it changes
-// // we pass this to the store
-// const persistedReducer = persistReducer(persistConfig, reducer);
-
-// const store = configureStore({
-//   reducer: persistedReducer,
-// });
-
-// export default store;

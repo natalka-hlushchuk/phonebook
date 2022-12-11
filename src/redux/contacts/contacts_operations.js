@@ -20,11 +20,9 @@ export const addContact = createAsyncThunk(
   async (info, thunkAPI) => {
     try {
       const response = await addContacts(info);
-      console.log(1111111, response);
       Notiflix.Notify.success(`${response.name} successfully added`);
       return response;
     } catch (e) {
-      console.log(e);
       Notiflix.Notify.failure(`Something went wrong ${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }

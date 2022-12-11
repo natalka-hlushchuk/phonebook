@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/auth_operations';
 import {
   ContactsLabel,
   Field,
   Button,
 } from 'components/RegisterForm/RegisterForm.styled';
 import { RegisterFormStyled } from './RegisterForm.styled';
-import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/auth_operations';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,6 @@ const RegisterForm = () => {
       email: email,
       password: password,
     };
-    console.log(userInfo);
     dispatch(register(userInfo));
     setName('');
     setEmail('');

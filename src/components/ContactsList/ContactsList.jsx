@@ -1,7 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   deleteContact,
   fetchContacts,

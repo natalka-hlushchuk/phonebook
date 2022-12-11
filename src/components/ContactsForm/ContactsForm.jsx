@@ -11,8 +11,6 @@ export const ContactsForm = () => {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  console.log(contacts);
-
   const onChange = e => {
     const { name, value } = e.currentTarget;
 

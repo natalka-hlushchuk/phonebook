@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/auth_operations';
+import { LogInFormStyled } from './LogInForm.styled';
 import {
   ContactsLabel,
   Field,
   Button,
 } from 'components/RegisterForm/RegisterForm.styled';
-
-import { useDispatch } from 'react-redux';
-import { LogInFormStyled } from './LogInForm.styled';
-import { logIn } from 'redux/auth/auth_operations';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ const LogInForm = () => {
       email: email,
       password: password,
     };
-    console.log(userInfo);
     dispatch(logIn(userInfo));
     setEmail('');
     setPassword('');

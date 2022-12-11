@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { currentUser } from 'redux/auth/auth_operations';
-// import { Layout } from '../Layout/Layout';
 import NotFound from '../components/NotFound/NotFound';
 import { AppBar } from './AppBar/AppBar';
 import PrivateRoute from './PrivateRoute';
