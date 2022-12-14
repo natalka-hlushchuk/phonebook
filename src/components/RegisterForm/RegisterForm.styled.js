@@ -30,13 +30,18 @@ export const Field = styled.input`
 export const Button = styled.button`
   min-width: 100px;
   padding: 5px;
-
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
   background-color: rgb(212, 166, 252);
   color: white;
   border: 1px solid rgb(212, 166, 252);
   border-radius: 4px;
   cursor: pointer;
   :hover {
+    background-color: rgb(243, 233, 252);
+  }
+  :disabled {
     background-color: rgb(243, 233, 252);
   }
 `;

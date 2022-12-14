@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { addContact } from 'redux/contacts/contacts_operations';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
-import { ContactsLabel, ContactsText, Field } from './ContactsForm.styled';
+import { changeContact } from 'redux/contacts/contacts_operations';
+import {
+  ContactsLabel,
+  Field,
+  ContactsText,
+} from 'components/ContactsForm/ContactsForm.styled';
 import { Button } from 'components/LogInForm/LogInForm.styled';
+import { selectIsLoading } from 'redux/selectors';
 
-export const ContactsForm = ({ handleClose }) => {
+export const ChangeContactForm = ({ chosenId, handleClose }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const onChange = e => {
     const { name, value } = e.currentTarget;
@@ -29,20 +31,9 @@ export const ContactsForm = ({ handleClose }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
-    const contactInfo = {
-      name: name,
-      number: number,
-    };
-    const notify = () => toast(`${contactInfo.name} is already in contacts`);
-    if (
-      contacts.find(
-        cont => cont.name.toLowerCase() === contactInfo.name.toLowerCase()
-      )
-    )
-      return notify();
-
-    dispatch(addContact(contactInfo));
+    dispatch(
+      changeContact({ contactId: chosenId, name: name, number: number })
+    );
     setName('');
     setNumber('');
     handleClose();
@@ -51,7 +42,7 @@ export const ContactsForm = ({ handleClose }) => {
   return (
     <form onSubmit={handleSubmit}>
       <ContactsLabel>
-        <ContactsText>Name </ContactsText>
+        <ContactsText className="text">Name </ContactsText>
         <Field
           onChange={onChange}
           type="text"
@@ -59,12 +50,11 @@ export const ContactsForm = ({ handleClose }) => {
           value={name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="Enter name"
           required
         />
       </ContactsLabel>
       <ContactsLabel>
-        <ContactsText>Number</ContactsText>
+        <ContactsText className="text">Number</ContactsText>
         <Field
           onChange={onChange}
           type="tel"
@@ -72,12 +62,11 @@ export const ContactsForm = ({ handleClose }) => {
           value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          placeholder="Enter number"
           required
         />
       </ContactsLabel>
       <Button type="submit" disabled={isLoading}>
-        Add contact
+        Change contact
       </Button>
     </form>
   );

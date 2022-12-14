@@ -3,6 +3,7 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
+  changeContact,
 } from 'redux/contacts/contacts_operations';
 
 export const contactSlice = createSlice({
@@ -58,6 +59,14 @@ export const contactSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.contacts.isLoading = false;
         state.contacts.error = action.payload;
+      })
+
+      .addCase(changeContact.fulfilled, (state, action) => {
+        state.contacts.isLoading = false;
+        state.contacts.error = null;
+        state.contacts.items = state.contacts.items.map(cont =>
+          cont.id === action.payload.id ? action.payload : cont
+        );
       });
   },
 });

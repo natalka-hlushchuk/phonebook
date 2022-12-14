@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-export const NavStyled = styled.nav`
-  display: flex;
-  gap: 15px;
-`;
 
 export const NavLinkStyled = styled(NavLink)`
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 47px;
-  color: black;
+  font-size: 18px;
   text-decoration: none;
   letter-spacing: 0.02em;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   &.active {
-    color: #990066;
+    color: black;
   }
   &:hover:not(.active),
   &:focus-visible:not(.active) {

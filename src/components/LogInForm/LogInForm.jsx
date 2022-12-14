@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/auth_operations';
 import { LogInFormStyled } from './LogInForm.styled';
 import {
@@ -9,6 +9,8 @@ import {
 } from 'components/RegisterForm/RegisterForm.styled';
 
 const LogInForm = () => {
+  const isLoading = useSelector(state => state.auth.isLoading);
+  console.log(isLoading);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,6 +49,7 @@ const LogInForm = () => {
           type="email"
           name="email"
           value={email}
+          placeholder="Enter email"
           required
         />
       </ContactsLabel>
@@ -59,10 +62,13 @@ const LogInForm = () => {
           value={password}
           pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?=.*[A-Z])(?=.*[a-z]).*$"
           title="Password may contain uppercase and lowercase latin letters, numbers. Minimum 8 characters."
+          placeholder="Enter password"
           required
         />
       </ContactsLabel>
-      <Button type="submit">To log In</Button>
+      <Button type="submit" disabled={isLoading}>
+        To log In
+      </Button>
     </LogInFormStyled>
   );
 };

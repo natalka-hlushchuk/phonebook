@@ -44,3 +44,8 @@ export async function deleteContacts(contactId) {
   const response = await axios.delete(`contacts/${contactId}`);
   return response.data;
 }
+
+export async function changeContacts(contactId, contactObj) {
+  const response = await axios.patch(`contacts/${contactId}`, contactObj);
+  return response.data;
+}

@@ -1,29 +1,8 @@
 import styled from 'styled-components';
-import {
-  color,
-  space,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-} from 'styled-system';
-
-export const Box = styled('div')(
-  color,
-  space,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position
-);
 
 export const Title = styled.h1`
   font-family: 'Rubik One', sans-serif;
-  font-size: 40px;
+  font-size: 32px;
   text-transform: uppercase;
   text-align: center;
   background: rgb(212, 166, 252);
@@ -34,10 +13,12 @@ export const Title = styled.h1`
   padding: 5px 10px;
 `;
 export const TitleCont = styled.h2`
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-family: 'Rubik One', sans-serif;
-  font-size: 25px;
+  font-size: 18px;
   text-transform: uppercase;
   background: rgb(212, 166, 252);
   color: white;

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/auth_operations';
 import {
   ContactsLabel,
   Field,
   Button,
 } from 'components/RegisterForm/RegisterForm.styled';
-import { RegisterFormStyled } from './RegisterForm.styled';
+import { Form } from 'react-bootstrap';
 
 const RegisterForm = () => {
+  const isLoading = useSelector(state => state.auth.isLoading);
+  console.log(isLoading);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -45,7 +47,7 @@ const RegisterForm = () => {
     setPassword('');
   };
   return (
-    <RegisterFormStyled onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <ContactsLabel>
         <span className="text">Name </span>
         <Field
@@ -55,6 +57,7 @@ const RegisterForm = () => {
           value={name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          placeholder="Enter name"
           required
         />
       </ContactsLabel>
@@ -65,6 +68,7 @@ const RegisterForm = () => {
           type="email"
           name="email"
           value={email}
+          placeholder="Enter email"
           required
         />
       </ContactsLabel>
@@ -75,13 +79,16 @@ const RegisterForm = () => {
           type="password"
           name="password"
           value={password}
+          placeholder="Enter password"
           pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?=.*[A-Z])(?=.*[a-z]).*$"
           title="Password may contain uppercase and lowercase latin letters, numbers. Minimum 8 characters."
           required
         />
       </ContactsLabel>
-      <Button type="submit">To register</Button>
-    </RegisterFormStyled>
+      <Button type="submit" disabled={isLoading}>
+        To register
+      </Button>
+    </Form>
   );
 };
 export default RegisterForm;

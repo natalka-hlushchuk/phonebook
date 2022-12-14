@@ -1,16 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {
-  NavStyled,
-  NavLinkStyled,
-} from 'components/Navigation/Navigation.styled';
+import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
+import { Nav } from 'react-bootstrap';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   return (
-    <NavStyled>
+    <Nav className="mr-auto gap-3 align-items-center">
       <NavLinkStyled to="/">Home</NavLinkStyled>
       {isLoggedIn && <NavLinkStyled to="contacts">Contacts</NavLinkStyled>}
-    </NavStyled>
+    </Nav>
   );
 };

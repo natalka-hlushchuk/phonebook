@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-export const UserMenuStyled = styled.div`
-  display: flex;
-  gap: 15px;
-  align-items: center;
-`;
 export const UserText = styled.p`
-  color: black;
-  font-weight: 700;
+  color: white;
+`;
+export const UserImg = styled.img`
+  background: white;
+  border-radius: 50%;
 `;
