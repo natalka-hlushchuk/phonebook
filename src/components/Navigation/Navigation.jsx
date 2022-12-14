@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
+import { selectIsLoggedIn } from 'redux/selectors';
 import { Nav } from 'react-bootstrap';
+import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
 
 export const Navigation = () => {
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <Nav className="mr-auto gap-3 align-items-center">
       <NavLinkStyled to="/">Home</NavLinkStyled>

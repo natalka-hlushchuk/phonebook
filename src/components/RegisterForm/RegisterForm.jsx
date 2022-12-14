@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Form } from 'react-bootstrap';
 import { register } from 'redux/auth/auth_operations';
+import { selectAuthIsLoading } from 'redux/selectors';
 import {
   ContactsLabel,
   Field,
   Button,
+  ContactName,
 } from 'components/RegisterForm/RegisterForm.styled';
-import { Form } from 'react-bootstrap';
 
-const RegisterForm = () => {
-  const isLoading = useSelector(state => state.auth.isLoading);
-  console.log(isLoading);
+export const RegisterForm = () => {
+  const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,7 +51,7 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <ContactsLabel>
-        <span className="text">Name </span>
+        <ContactName>Name </ContactName>
         <Field
           onChange={onChange}
           type="text"
@@ -62,7 +64,7 @@ const RegisterForm = () => {
         />
       </ContactsLabel>
       <ContactsLabel>
-        <span className="text">Email</span>
+        <ContactName>Email</ContactName>
         <Field
           onChange={onChange}
           type="email"
@@ -73,7 +75,7 @@ const RegisterForm = () => {
         />
       </ContactsLabel>
       <ContactsLabel>
-        <span className="text">Password</span>
+        <ContactName>Password</ContactName>
         <Field
           onChange={onChange}
           type="password"
@@ -86,9 +88,8 @@ const RegisterForm = () => {
         />
       </ContactsLabel>
       <Button type="submit" disabled={isLoading}>
-        To register
+        Sing-in
       </Button>
     </Form>
   );
 };
-export default RegisterForm;

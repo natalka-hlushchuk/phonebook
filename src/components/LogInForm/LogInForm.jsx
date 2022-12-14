@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/auth_operations';
+import { selectAuthIsLoading } from 'redux/selectors';
 import { LogInFormStyled } from './LogInForm.styled';
 import {
   ContactsLabel,
   Field,
   Button,
+  ContactName,
 } from 'components/RegisterForm/RegisterForm.styled';
 
-const LogInForm = () => {
-  const isLoading = useSelector(state => state.auth.isLoading);
-  console.log(isLoading);
+export const LogInForm = () => {
+  const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,7 +45,7 @@ const LogInForm = () => {
   return (
     <LogInFormStyled onSubmit={handleSubmit}>
       <ContactsLabel>
-        <span className="text">Email</span>
+        <ContactName>Email</ContactName>
         <Field
           onChange={onChange}
           type="email"
@@ -54,7 +56,7 @@ const LogInForm = () => {
         />
       </ContactsLabel>
       <ContactsLabel>
-        <span className="text">Password</span>
+        <ContactName>Password</ContactName>
         <Field
           onChange={onChange}
           type="password"
@@ -72,4 +74,3 @@ const LogInForm = () => {
     </LogInFormStyled>
   );
 };
-export default LogInForm;

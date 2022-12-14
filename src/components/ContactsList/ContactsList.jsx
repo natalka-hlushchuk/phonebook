@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { BsTelephoneForwardFill } from 'react-icons/bs';
+import { SlPencil } from 'react-icons/sl';
+import { ImBin } from 'react-icons/im';
 import {
-  changeContact,
   deleteContact,
   fetchContacts,
 } from 'redux/contacts/contacts_operations';
 import { selectContacts, selectFilter } from 'redux/selectors';
+import { ModalWindow, ChangeContactForm } from 'components/index';
 import { Button } from 'components/ContactsForm/ContactsForm.styled';
 import {
   ContactName,
@@ -13,25 +16,24 @@ import {
   ListItem,
   ListLink,
   ListLinkWrap,
+  ContactNameField,
 } from 'components/ContactsList/ContactsList.styled';
-import { BsTelephoneForwardFill } from 'react-icons/bs';
-import { SlPencil } from 'react-icons/sl';
-import { ImBin } from 'react-icons/im';
-import { ModalWindow } from 'components/Modal/Modal';
-import { ChangeContactForm } from 'components/ChangeContactForm/ChangeContactForm';
 
 export const ContactsList = () => {
-  const [chosenId, setChosenId] = useState(null);
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
+
+  const [chosenId, setChosenId] = useState(null);
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
   const [showContactNumber, setShowContactNumber] = useState(false);
   const toggleContactNumber = () =>
     setShowContactNumber(showContactNumber !== true);
+
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -55,7 +57,9 @@ export const ContactsList = () => {
   return (
     <ContactsListStyled>
       {filter && (
-        <span className="name">Found {filterContacts().length} contacts</span>
+        <ContactNameField>
+          Found {filterContacts().length} contacts
+        </ContactNameField>
       )}
       {filterContacts().map(({ name, number, id }) => (
         <ListItem key={id}>

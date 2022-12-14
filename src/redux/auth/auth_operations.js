@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Notiflix from 'notiflix';
+import { toast } from 'react-toastify';
 import { getUser, logInUser, logOutUser, registerUser } from 'service/api';
 import { token } from 'service/api';
 
@@ -11,7 +11,8 @@ export const register = createAsyncThunk(
       token.set(response.token);
       return response;
     } catch (e) {
-      Notiflix.Notify.failure(`Something went wrong ${e.message}`);
+      const notify = () => toast.error(`Something went wrong ${e.message}`);
+      notify();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -25,7 +26,8 @@ export const logIn = createAsyncThunk(
       token.set(response.token);
       return response;
     } catch (e) {
-      Notiflix.Notify.failure(`Something went wrong ${e.message}`);
+      const notify = () => toast.error(`Something went wrong ${e.message}`);
+      notify();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -37,7 +39,8 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     token.unset();
     return response;
   } catch (e) {
-    Notiflix.Notify.failure(`Something went wrong ${e.message}`);
+    const notify = () => toast.error(`Something went wrong ${e.message}`);
+    notify();
     return thunkAPI.rejectWithValue(e.message);
   }
 });
@@ -55,7 +58,8 @@ export const currentUser = createAsyncThunk(
       const response = await getUser();
       return response;
     } catch (e) {
-      Notiflix.Notify.failure(`Something went wrong ${e.message}`);
+      const notify = () => toast.error(`Something went wrong ${e.message}`);
+      notify();
       return thunkAPI.rejectWithValue(e.message);
     }
   }

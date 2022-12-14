@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NotFoundStyled, ButtonStyled, TextStyled } from './NotFound.styled';
+import { NotFoundStyled, TextStyled } from './NotFound.styled';
+import { Button } from 'components/index';
 
-const NotFound = () => {
+export const NotFound = () => {
   const navigate = useNavigate();
   const handleGoHome = () => {
     navigate('/');
@@ -10,11 +11,10 @@ const NotFound = () => {
 
   return (
     <NotFoundStyled>
-      <ButtonStyled type="button" onClick={handleGoHome}>
+      <Button type="button" onClick={handleGoHome}>
         Back to Home
-      </ButtonStyled>
+      </Button>
       <TextStyled>The page you are looking for can`t be found</TextStyled>
     </NotFoundStyled>
   );
 };
-export default NotFound;

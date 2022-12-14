@@ -1,18 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import icon from '../../img/kindpng.png';
-import { logOut } from 'redux/auth/auth_operations';
-import { UserImg, UserText } from './UserMenu.styled';
-import { Button } from 'components/Button/Button';
 import { Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { selectAuthName, selectIsLoggedIn } from 'redux/selectors';
+import { logOut } from 'redux/auth/auth_operations';
+import { Button } from 'components/index';
+import { UserImg, UserText } from './UserMenu.styled';
+
 export const UserMenu = () => {
-  const name = useSelector(state => state.auth.user.name);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const name = useSelector(selectAuthName);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onClick = evt => {
+  const onClick = () => {
     dispatch(logOut());
     if (isLoggedIn) navigate('/');
   };

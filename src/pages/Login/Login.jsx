@@ -1,6 +1,6 @@
 import React from 'react';
-import LogInForm from 'components/LogInForm/LogInForm';
-import { ModalWindow } from 'components/Modal/Modal';
+import { LogInForm } from 'components/index';
+import { ModalWindow } from 'components/index';
 
 const Login = ({ show, handleClose }) => {
   return (

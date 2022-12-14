@@ -8,7 +8,6 @@ export const ButtonStyled = styled.button`
   background-color: ${props =>
     props.fromHeader ? '#990066' : 'rgb(212, 166, 252)'};
   color: white;
-  /* border: none; */
   border: ${props =>
     props.fromHeader ? '1px solid #800080' : '1px solid rgb(243, 233, 252)'};
   border-radius: 4px;
@@ -16,5 +15,8 @@ export const ButtonStyled = styled.button`
   :hover {
     background-color: ${props =>
       props.fromHeader ? '#800080' : 'rgb(243, 233, 252)'};
+    color: ${props => (props.fromHeader ? 'white' : '#800080')};
+    border: ${props =>
+      props.fromHeader ? '1px solid #800080' : '1px solid rgb(212, 166, 252)'};
   }
 `;

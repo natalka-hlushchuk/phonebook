@@ -9,11 +9,12 @@ export const ContactsLabel = styled.label`
   font-weight: 600;
   color: rgb(212, 166, 252);
   margin-bottom: 5px;
-  .text {
-    display: block;
-    padding-bottom: 5px;
-  }
 `;
+export const ContactName = styled.span`
+  display: block;
+  padding-bottom: 5px;
+`;
+
 export const Field = styled.input`
   padding: 5px;
   background-color: white;

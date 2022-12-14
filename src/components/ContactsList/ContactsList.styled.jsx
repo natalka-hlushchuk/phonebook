@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const ContactsListStyled = styled.ul`
   padding: 0;
   margin: 20px auto 0 auto;
-  .name {
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-    color: rgb(212, 166, 252);
-    margin-bottom: 5px;
-  }
+`;
+export const ContactNameField = styled.span`
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(212, 166, 252);
+  margin-bottom: 5px;
 `;
 
 export const ListItem = styled.li`
@@ -22,10 +22,7 @@ export const ListItem = styled.li`
     margin-right: 10px;
   }
 `;
-export const ListLinkWrap = styled.div`
-  /* display: flex;
-  gap: 10px; */
-`;
+export const ListLinkWrap = styled.div``;
 export const ListLink = styled.a`
   color: #990066;
   &:hover,

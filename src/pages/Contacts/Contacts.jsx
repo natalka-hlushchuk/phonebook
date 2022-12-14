@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoading, selectError, selectContacts } from 'redux/selectors';
-import { ContactsForm } from 'components/ContactsForm/ContactsForm';
-import { ContactsList } from 'components/ContactsList/ContactsList';
-import { Loader } from 'components/Loader/loader';
-import Filter from 'components/Filter/Filter';
-import { Title, TitleCont } from '../../pages/Contacts/Contacts.styled';
 import { Container } from 'react-bootstrap';
-import { Button } from 'components/ContactsForm/ContactsForm.styled';
-import { SlUserFollow } from 'react-icons/sl';
-import { ModalWindow } from 'components/Modal/Modal';
-import { SlMagnifier } from 'react-icons/sl';
+import { SlMagnifier, SlUserFollow } from 'react-icons/sl';
+import { selectIsLoading, selectError, selectContacts } from 'redux/selectors';
+import {
+  ContactsForm,
+  ContactsList,
+  Loader,
+  Filter,
+  Button,
+  ModalWindow,
+} from 'components/index';
+import { Title, TitleCont } from './Contacts.styled';
+
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
